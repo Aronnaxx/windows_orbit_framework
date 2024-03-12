@@ -89,5 +89,3 @@ Start-Process "https://isaac-orbit.github.io/orbit/source/setup/developer.html"
 Write-Host "Running Orbit setup commands..."
 $gitBashPath = "C:\Program Files\Git\bin\bash.exe" # Ensure this path is correct for the system
 & $gitBashPath -c "cd `"$unixStyleOrbitDir`"; ./orbit.sh -v; ./orbit.sh -i; ./orbit.sh -e rsl_rl; ./orbit.sh -p -m pip uninstall torch -y; ./orbit.sh -p -m pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118; ./orbit.sh -p source/standalone/demos/quadrupeds.py"
-
-
