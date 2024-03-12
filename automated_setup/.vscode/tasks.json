@@ -1,0 +1,29 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "setup_python_env",
+            "type": "shell",
+            "command": "cmd /c \"set CARB_APP_PATH=._isaac_sim\\kit && set ISAAC_PATH=._isaac_sim && set EXP_PATH=._isaac_sim\\apps && call .\\_isaac_sim\\setup_python_env.bat && set > .\\.vscode\\.python.env && call .\\_isaac_sim\\python.bat .\\.vscode\\tools\\setup_vscode.py\"",
+            "windows": {
+                "options": {
+                    "shell": {
+                        "executable": "cmd.exe",
+                        "args": ["/d", "/c"]
+                    }
+                }
+            },
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": [],
+            "presentation": {
+                "reveal": "always",
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": true
+            }
+        }
+    ]
+}
