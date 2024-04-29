@@ -1,0 +1,3 @@
+[submodule "dependencies/orbit"]
+	path = dependencies/orbit
+	url = https://github.com/NVIDIA-Omniverse/orbit.git

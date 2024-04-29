@@ -66,26 +66,12 @@ Copy-Item "$parent_dir\automated_setup\orbit.sh" -Destination "$orbit_dir\orbit.
 Copy-Item "$parent_dir\automated_setup\.vscode" -Destination "$orbit_dir\" -Recurse -Force
 
 
-# Replace symlink creation section with this
-$process = Start-Process powershell -ArgumentList "-NoProfile -ExecutionPolicy Bypass -File `"$PWD\\create-symlinks.ps1`" $scriptParams" -Verb RunAs -PassThru
-$process.WaitForExit()
-
-# Check if the script was successful
-if ($process.ExitCode -eq 0) {
-    Write-Host "Symlinks created successfully."
-    # Continue with the rest of the script
-} else {
-    Write-Host "Failed to create symlinks. Exit code: $($process.ExitCode)" -ForegroundColor Red
-    exit
-}
-
 # Run Orbit commands via Git Bash
 Write-Host "Running Orbit setup commands..."
 # Convert the Windows-style path to Unix-style for Git Bash
 $unixStyleOrbitDir = $orbit_dir -replace '^C:', '/c' -replace '\\', '/'
 
-Start-Process "https://isaac-orbit.github.io/orbit/source/setup/developer.html"
-
 Write-Host "Running Orbit setup commands..."
 $gitBashPath = "C:\Program Files\Git\bin\bash.exe" # Ensure this path is correct for the system
 & $gitBashPath -c "cd `"$unixStyleOrbitDir`"; ./orbit.sh -v; ./orbit.sh -i; ./orbit.sh -e rsl_rl; ./orbit.sh -p -m pip uninstall torch -y; ./orbit.sh -p -m pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118; ./orbit.sh -p source/standalone/demos/quadrupeds.py"
+# & $gitBashPath -c "cd `"$unixStyleOrbitDir`"; ./orbit.sh -v; ./orbit.sh -i; ./orbit.sh -e rsl_rl; ./orbit.sh -p -m pip uninstall torch -y; ./orbit.sh -p -m pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118; ./orbit.sh -p source/standalone/demos/quadrupeds.py"
