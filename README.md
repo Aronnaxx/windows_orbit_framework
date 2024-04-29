@@ -7,6 +7,4 @@ https://www.nvidia.com/en-us/omniverse/
 
 https://git-scm.com/downloads
 
-After cloning the repo, all you need to do to set it up is run the "windows_automated_setup.ps1" script.
-
-Note! It will ask for admin, this is to create the symlink between Isaac Sim and the Orbit directory!
+After cloning the repo, launch Git Bash and run the windows automated setup script
