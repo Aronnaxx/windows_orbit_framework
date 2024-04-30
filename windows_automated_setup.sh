@@ -66,7 +66,4 @@ cp orbit.sh "dependencies/orbit/orbit.sh"
 # checks that python path is set correctly
 ${ISAACSIM_PYTHON_EXE} -c "print('Isaac Sim configuration is now complete.')"
 
-
 echo "Setup complete!"
-
-orbit -h
