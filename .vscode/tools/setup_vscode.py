@@ -20,7 +20,7 @@ import pathlib
 
 ORBIT_DIR = pathlib.Path(__file__).parents[2]
 """Path to the orbit directory."""
-ISAACSIM_DIR = os.path.join(ORBIT_DIR, "_isaac_sim")
+ISAACSIM_DIR = "/c/Users/$USERNAME/AppData/Local/ov/pkg/isaac_sim-2023.1.1"
 """Path to the isaac-sim directory."""
 
 

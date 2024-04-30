@@ -111,7 +111,7 @@ while [[ $# -gt 0 ]]; do
             export -f install_orbit_extension
             find -L "${ORBIT_PATH}/source/extensions" -mindepth 1 -maxdepth 1 -type d -exec bash -c 'install_orbit_extension "{}"' \;
             unset install_orbit_extension
-            update_vscode_settings
+            # update_vscode_settings
             shift
             ;;
         -e|--extra)

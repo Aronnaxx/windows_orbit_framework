@@ -18,6 +18,11 @@ if ! grep -q "export ORBIT_PATH=" ~/.bashrc; then
     echo "export ORBIT_PATH=\"$ORBIT_PATH\"" >> ~/.bashrc
 fi
 
+# Create an alias for the orbit script in the .bashrc file
+if ! grep -q "alias orbit=" ~/.bashrc; then
+    echo "alias orbit='${ORBIT_PATH}/orbit.sh'" >> ~/.bashrc
+fi
+
 
 # ---------- SETUP OF ISAAC SIM ----------
 
@@ -54,7 +59,7 @@ read -p "Press [Enter] key to start the rest of the setup, as long as these look
 
 
 # Copy the .vscode directory and orbit.sh to dependencies/orbit
-cp -r .vscode "dependencies/orbit/.vscode"
+cp -r .vscode "dependencies/orbit"
 
 cp orbit.sh "dependencies/orbit/orbit.sh"
 
@@ -63,3 +68,5 @@ ${ISAACSIM_PYTHON_EXE} -c "print('Isaac Sim configuration is now complete.')"
 
 
 echo "Setup complete!"
+
+orbit -h
