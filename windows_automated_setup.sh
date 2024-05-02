@@ -10,9 +10,7 @@ fi
 # ------------ SETUP OF ORBIT ------------
 
 # Set the ORBIT_PATH environment variable
-export ORBIT_PATH="$( cd "$( dirname "${BASH_SOURCE[0]}" )/../../orbit" &> /dev/null && pwd )"
-echo "ORBIT_PATH: $ORBIT_PATH"
-
+export ORBIT_PATH="$( cd "$( dirname "${BASH_SOURCE[0]}" )/../orbit" &> /dev/null && pwd )"
 # Check if ORBIT_PATH is already in .bashrc
 if ! grep -q "export ORBIT_PATH=" ~/.bashrc; then
     echo "export ORBIT_PATH=\"$ORBIT_PATH\"" >> ~/.bashrc
@@ -28,7 +26,6 @@ fi
 
 # Set the ISAACSIM_PATH environment variable
 export ISAACSIM_PATH="/c/Users/$USERNAME/AppData/Local/ov/pkg/isaac_sim-2023.1.1"
-echo "ISAACSIM_PATH: $ISAACSIM_PATH"
 
 # Check if ISAACSIM_PATH is already in .bashrc
 if ! grep -q "export ISAACSIM_PATH=" ~/.bashrc; then
@@ -37,7 +34,6 @@ fi
 
 # Set the ISAACSIM_PYTHON_EXE environment variable
 export ISAACSIM_PYTHON_EXE="${ISAACSIM_PATH}/python.bat"
-echo "ISAACSIM_PYTHON_EXE: $ISAACSIM_PYTHON_EXE"
 
 # Check if ISAACSIM_PYTHON_EXE is already in .bashrc
 if ! grep -q "export ISAACSIM_PYTHON_EXE=" ~/.bashrc; then
@@ -64,9 +60,9 @@ DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
 # Copy the .vscode directory and orbit.sh to ${ORBIT_PATH}/
 cp -r "${DIR}/.vscode" "${ORBIT_PATH}/"
 
-cp "${DIR}/orbit.sh" "${ORBIT_PATH}/orbit.sh"
+cp "${DIR}/orbit.sh" "${ORBIT_PATH}/"
 
 # checks that python path is set correctly
 ${ISAACSIM_PYTHON_EXE} -c "print('Isaac Sim configuration is now complete.')"
 
-echo "Setup complete!"
+echo "Windows framework setup complete!"
