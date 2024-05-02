@@ -5,7 +5,7 @@
 
 """This script sets up the vs-code settings for the orbit project.
 
-This script merges the python.analysis.extraPaths from the "_isaac_sim/.vscode/settings.json" file into
+This script merges the python.analysis.extraPaths from the "$ISAACSIM_DIR/.vscode/settings.json" file into
 the ".vscode/settings.json" file.
 
 This is necessary because Isaac Sim 2022.2.1 does not add the necessary python packages to the python path
@@ -28,7 +28,7 @@ def overwrite_python_analysis_extra_paths(orbit_settings: str) -> str:
     """Overwrite the python.analysis.extraPaths in the orbit settings file.
 
     The extraPaths are replaced with the path names from the isaac-sim settings file that exists in the
-    "_isaac_sim/.vscode/settings.json" file.
+    "$ISAACSIM_DIR/.vscode/settings.json" file.
 
     Args:
         orbit_settings: The settings string to use as template.
@@ -57,7 +57,7 @@ def overwrite_python_analysis_extra_paths(orbit_settings: str) -> str:
     # change the path names to be relative to the orbit directory
     path_names = settings.split(",")
     path_names = [path_name.strip().strip('"') for path_name in path_names]
-    path_names = ['"${workspaceFolder}/_isaac_sim/' + path_name + '"' for path_name in path_names if len(path_name) > 0]
+    path_names = ['"${ISAACSIM_DIR}/' + path_name + '"' for path_name in path_names if len(path_name) > 0]
     # combine them into a single string
     path_names = ",\n\t\t".expandtabs(4).join(path_names)
 

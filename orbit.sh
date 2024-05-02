@@ -17,6 +17,8 @@ tabs 4
 
 # get source directory
 export ORBIT_PATH="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
+export ISAACSIM_PATH="/c/Users/$USERNAME/AppData/Local/ov/pkg/isaac_sim-2023.1.1"
+export ISAACSIM_PYTHON_EXE="${ISAACSIM_PATH}/python.bat"
 
 #==
 # Helper functions
@@ -24,19 +26,9 @@ export ORBIT_PATH="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd 
 
 # extract the python from isaacsim
 extract_python_exe() {
-    if [ ! -z ${ISAACSIM_PATH} ];
-    then
-        build_path=${ISAACSIM_PATH}
-    else
-        build_path=${ORBIT_PATH}/_isaac_sim
-    fi
-    if ! [[ -z "${CONDA_PREFIX}" ]]; then
-        local python_exe=${CONDA_PREFIX}/bin/python
-    else
-        local python_exe=${build_path}/python.bat
-    fi
+    local python_exe=$ISAACSIM_PYTHON_EXE
     if [ ! -f "${python_exe}" ]; then
-        echo "[ERROR] No python executable found at path: ${build_path}" >&2
+        echo "[ERROR] No python executable found at path: ${python_exe}" >&2
         exit 1
     fi
     echo ${python_exe}
@@ -44,15 +36,9 @@ extract_python_exe() {
 
 # extract the simulator exe from isaacsim
 extract_isaacsim_exe() {
-    if [ ! -z ${ISAACSIM_PATH} ];
-    then
-        build_path=${ISAACSIM_PATH}
-    else
-        build_path=${ORBIT_PATH}/_isaac_sim
-    fi
-    local isaacsim_exe=${build_path}/isaac-sim.bat
+    local isaacsim_exe=$ISAACSIM_PATH/isaac-sim.bat
     if [ ! -f "${isaacsim_exe}" ]; then
-        echo "[ERROR] No isaac-sim executable found at path: ${build_path}" >&2
+        echo "[ERROR] No isaac-sim executable found at path: ${isaacsim_exe}" >&2
         exit 1
     fi
     echo ${isaacsim_exe}
