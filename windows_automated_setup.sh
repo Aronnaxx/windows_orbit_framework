@@ -10,7 +10,7 @@ fi
 # ------------ SETUP OF ORBIT ------------
 
 # Set the ORBIT_PATH environment variable
-export ORBIT_PATH="$( cd "$( dirname "${BASH_SOURCE[0]}" )/dependencies/orbit" &> /dev/null && pwd )"
+export ORBIT_PATH="$( cd "$( dirname "${BASH_SOURCE[0]}" )/../../orbit" &> /dev/null && pwd )"
 echo "ORBIT_PATH: $ORBIT_PATH"
 
 # Check if ORBIT_PATH is already in .bashrc

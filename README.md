@@ -7,4 +7,5 @@ https://www.nvidia.com/en-us/omniverse/
 
 https://git-scm.com/downloads
 
-After cloning the repo, launch Git Bash and run the windows automated setup script
+Make sure to clone the Orbit repo into the same directory as this repo.
+
