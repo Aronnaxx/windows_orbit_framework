@@ -58,10 +58,13 @@ cat ~/.bashrc
 read -p "Press [Enter] key to start the rest of the setup, as long as these look correct..."
 
 
-# Copy the .vscode directory and orbit.sh to dependencies/orbit
-cp -r .vscode "dependencies/orbit"
+# get the directory that the script is in
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
 
-cp orbit.sh "dependencies/orbit/orbit.sh"
+# Copy the .vscode directory and orbit.sh to ${ORBIT_PATH}/
+cp -r "${DIR}/.vscode" "${ORBIT_PATH}/"
+
+cp "${DIR}/orbit.sh" "${ORBIT_PATH}/orbit.sh"
 
 # checks that python path is set correctly
 ${ISAACSIM_PYTHON_EXE} -c "print('Isaac Sim configuration is now complete.')"
