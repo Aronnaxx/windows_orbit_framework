@@ -65,4 +65,6 @@ cp "${DIR}/orbit.sh" "${ORBIT_PATH}/"
 # checks that python path is set correctly
 ${ISAACSIM_PYTHON_EXE} -c "print('Isaac Sim configuration is now complete.')"
 
+"${ORBIT_PATH}/orbit.sh" -i
+
 echo "Windows framework setup complete!"
